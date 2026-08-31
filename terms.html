@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html><head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NQHMF4GP');</script>
+<!-- End Google Tag Manager -->
+<script>window.__resources = {"https://unpkg.com/react@18.3.1/umd/react.production.min.js": "assets/react.production.min.js", "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js": "assets/react-dom.production.min.js"};</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="assets/dc-runtime.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+
+<style>/* =========================================================================
+   EMCD Design System — Colors & Type (v2 — semantic-token layer)
+   Source of truth: github.com/mshiriaev-collab/emcd-ds  src/styles/tokens.css
+   --------------------------------------------------------------------------
+   TIER 1 · Raw palette        --dark-color-*, --light-color-*
+   TIER 2 · Theme alias        --color-{neutral,brand,red,green,orange,lime}-{1..8}
+                               (re-mapped per [data-theme])
+   TIER 3 · Semantic           --color-bg-*, --color-surface-*, --color-text-*,
+                               --color-icon-*, --color-border-*, --color-action-*,
+                               --color-status-*, --color-control-*
+                               (always reach for these in product code)
+   TIER 4 · Type roles         --font-{size,line-height,letter-spacing,weight}-
+                               {heading-page,heading-section,heading-subsection,
+                                heading-card,body-default,body-compact,
+                                label-default,label-small,
+                                caption-default,caption-strong}
+
+   Defaults to DARK. Add data-theme="light" on <html> to switch.
+   ========================================================================= */
+
+@font-face {
+  font-family: 'Roobert PRO';
+  src: url("assets/roobert-pro-400.woff2") format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Roobert PRO';
+  src: url("assets/roobert-pro-500.woff2") format('woff2');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Roobert PRO';
+  src: url("assets/roobert-pro-600.woff2") format('woff2');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Roobert PRO';
+  src: url("assets/roobert-pro-700.woff2") format('woff2');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+
+:root {
+  color-scheme: dark;
+
+  /* ===== TIER 1 — raw palette (theme-independent) ============= */
+  --dark-color-neutral-1: #0a0a0a;  --dark-color-neutral-2: #111111;
+  --dark-color-neutral-3: #1a1a1a;  --dark-color-neutral-4: #242424;
+  --dark-color-neutral-5: #383838;  --dark-color-neutral-6: #5c5c5c;
+  --dark-color-neutral-7: #9e9e9e;  --dark-color-neutral-8: #fafafa;
+
+  --dark-color-brand-1: #160824; --dark-color-brand-2: #281044;
+  --dark-color-brand-3: #411b6b; --dark-color-brand-4: #64309d;
+  --dark-color-brand-5: #8f42ff; --dark-color-brand-6: #ab6cff;
+  --dark-color-brand-7: #c79aff; --dark-color-brand-8: #e4ccff;
+
+  --dark-color-red-1: #220808; --dark-color-red-2: #38100f;
+  --dark-color-red-3: #5c1a18; --dark-color-red-4: #932927;
+  --dark-color-red-5: #e53935; --dark-color-red-6: #ec6663;
+  --dark-color-red-7: #f39694; --dark-color-red-8: #fac8c7;
+
+  --dark-color-green-1: #09160a; --dark-color-green-2: #112412;
+  --dark-color-green-3: #1d3d1f; --dark-color-green-4: #2d6030;
+  --dark-color-green-5: #43a047; --dark-color-green-6: #65bd68;
+  --dark-color-green-7: #94d596; --dark-color-green-8: #c7eac8;
+
+  --dark-color-orange-1: #1c1101; --dark-color-orange-2: #332001;
+  --dark-color-orange-3: #573603; --dark-color-orange-4: #925b06;
+  --dark-color-orange-5: #f59e0b; --dark-color-orange-6: #f7b84b;
+  --dark-color-orange-7: #f9d08a; --dark-color-orange-8: #fce8ca;
+
+  --dark-color-lime-1: #161900; --dark-color-lime-2: #2a3000;
+  --dark-color-lime-3: #485200; --dark-color-lime-4: #788701;
+  --dark-color-lime-5: #ebff00; --dark-color-lime-6: #f0ff4d;
+  --dark-color-lime-7: #f5ff94; --dark-color-lime-8: #fbffd1;
+
+  --light-color-neutral-1: #0a0a0a; --light-color-neutral-2: #2f2f2f;
+  --light-color-neutral-3: #555555; --light-color-neutral-4: #7c7c7c;
+  --light-color-neutral-5: #b0b0b0; --light-color-neutral-6: #d6d6d6;
+  --light-color-neutral-7: #efefef; --light-color-neutral-8: #fafafa;
+
+  --light-color-brand-1: #200d37; --light-color-brand-2: #36165b;
+  --light-color-brand-3: #52228a; --light-color-brand-4: #7130c2;
+  --light-color-brand-5: #8f42ff; --light-color-brand-6: #b989ff;
+  --light-color-brand-7: #dcc4ff; --light-color-brand-8: #f2e8ff;
+
+  --light-color-red-1: #2f0a0a; --light-color-red-2: #541313;
+  --light-color-red-3: #821f1d; --light-color-red-4: #b82d2b;
+  --light-color-red-5: #e53935; --light-color-red-6: #ee8682;
+  --light-color-red-7: #f8c1bf; --light-color-red-8: #fee9e8;
+
+  --light-color-green-1: #0d210e; --light-color-green-2: #163b18;
+  --light-color-green-3: #255d28; --light-color-green-4: #348038;
+  --light-color-green-5: #43a047; --light-color-green-6: #7dc580;
+  --light-color-green-7: #bee0c0; --light-color-green-8: #e8f6e9;
+
+  --light-color-orange-1: #2f1c00; --light-color-orange-2: #563603;
+  --light-color-orange-3: #8b5905; --light-color-orange-4: #c47d08;
+  --light-color-orange-5: #f59e0b; --light-color-orange-6: #f7b84b;
+  --light-color-orange-7: #f9d3a0; --light-color-orange-8: #fff2db;
+
+  --light-color-lime-1: #262b00; --light-color-lime-2: #4b5200;
+  --light-color-lime-3: #808b00; --light-color-lime-4: #b9c900;
+  --light-color-lime-5: #ebff00; --light-color-lime-6: #f0ff54;
+  --light-color-lime-7: #f5ff9a; --light-color-lime-8: #fbffd6;
+
+  /* ===== Type — raw scale (8 steps, parallel mobile) =========== */
+  --font-family-base: 'Roobert PRO', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --font-size-type-1: 40px; --line-height-type-1: 48px; --letter-spacing-type-1: 0;
+  --font-size-type-2: 32px; --line-height-type-2: 40px; --letter-spacing-type-2: 0;
+  --font-size-type-3: 28px; --line-height-type-3: 36px; --letter-spacing-type-3: 0;
+  --font-size-type-4: 24px; --line-height-type-4: 32px; --letter-spacing-type-4: 0;
+  --font-size-type-5: 20px; --line-height-type-5: 28px; --letter-spacing-type-5: 0;
+  --font-size-type-6: 16px; --line-height-type-6: 24px; --letter-spacing-type-6: 0;
+  --font-size-type-7: 14px; --line-height-type-7: 20px; --letter-spacing-type-7: 0;
+  --font-size-type-8: 12px; --line-height-type-8: 16px; --letter-spacing-type-8: 0;
+  --letter-spacing-overline: 0.08em;
+
+  /* ===== TIER 4 — Type role tokens (USE THESE) ================= */
+  --font-size-heading-page:           var(--font-size-type-1);
+  --line-height-heading-page:         var(--line-height-type-1);
+  --letter-spacing-heading-page:      var(--letter-spacing-type-1);
+  --font-weight-heading-page:         var(--font-weight-bold);
+
+  --font-size-heading-section:        var(--font-size-type-4);
+  --line-height-heading-section:      var(--line-height-type-4);
+  --letter-spacing-heading-section:   var(--letter-spacing-type-4);
+  --font-weight-heading-section:      var(--font-weight-bold);
+
+  --font-size-heading-subsection:     var(--font-size-type-5);
+  --line-height-heading-subsection:   var(--line-height-type-5);
+  --letter-spacing-heading-subsection:var(--letter-spacing-type-5);
+  --font-weight-heading-subsection:   var(--font-weight-bold);
+
+  --font-size-heading-card:           var(--font-size-type-6);
+  --line-height-heading-card:         var(--line-height-type-6);
+  --letter-spacing-heading-card:      var(--letter-spacing-type-6);
+  --font-weight-heading-card:         var(--font-weight-semibold);
+
+  --font-size-body-default:           var(--font-size-type-6);
+  --line-height-body-default:         var(--line-height-type-6);
+  --letter-spacing-body-default:      var(--letter-spacing-type-6);
+  --font-weight-body-default:         var(--font-weight-medium);
+
+  --font-size-body-compact:           var(--font-size-type-7);
+  --line-height-body-compact:         var(--line-height-type-7);
+  --letter-spacing-body-compact:      var(--letter-spacing-type-7);
+  --font-weight-body-compact:         var(--font-weight-regular);
+
+  --font-size-label-default:          var(--font-size-type-7);
+  --line-height-label-default:        var(--line-height-type-7);
+  --letter-spacing-label-default:     var(--letter-spacing-type-7);
+  --font-weight-label-default:        var(--font-weight-medium);
+
+  --font-size-label-small:            var(--font-size-type-8);
+  --line-height-label-small:          var(--line-height-type-8);
+  --letter-spacing-label-small:       var(--letter-spacing-overline);
+  --font-weight-label-small:          var(--font-weight-medium);
+
+  --font-size-caption-default:        var(--font-size-type-8);
+  --line-height-caption-default:      var(--line-height-type-8);
+  --letter-spacing-caption-default:   var(--letter-spacing-type-8);
+  --font-weight-caption-default:      var(--font-weight-regular);
+
+  --font-size-caption-strong:         var(--font-size-type-8);
+  --line-height-caption-strong:       var(--line-height-type-8);
+  --letter-spacing-caption-strong:    var(--letter-spacing-type-8);
+  --font-weight-caption-strong:       var(--font-weight-semibold);
+
+  /* ===== Spacing — 32-step 2px scale =========================== */
+  --space-2: 2px;   --space-4: 4px;   --space-6: 6px;   --space-8: 8px;
+  --space-10: 10px; --space-12: 12px; --space-14: 14px; --space-16: 16px;
+  --space-18: 18px; --space-20: 20px; --space-22: 22px; --space-24: 24px;
+  --space-26: 26px; --space-28: 28px; --space-30: 30px; --space-32: 32px;
+  --space-34: 34px; --space-36: 36px; --space-38: 38px; --space-40: 40px;
+  --space-42: 42px; --space-44: 44px; --space-46: 46px; --space-48: 48px;
+  --space-50: 50px; --space-52: 52px; --space-54: 54px; --space-56: 56px;
+  --space-58: 58px; --space-60: 60px; --space-62: 62px; --space-64: 64px;
+
+  /* ===== Radii — full 2px scale =============================== */
+  --radius-2:  2px;  --radius-4:  4px;  --radius-6:  6px;  --radius-8:  8px;
+  --radius-10: 10px; --radius-12: 12px; --radius-14: 14px; --radius-16: 16px;
+  --radius-18: 18px; --radius-20: 20px; --radius-22: 22px; --radius-24: 24px;
+  --radius-26: 26px; --radius-28: 28px; --radius-30: 30px; --radius-full: 9999px;
+
+  --border-width-1: 1px;
+  --border-width-2: 2px;
+
+  --focus-ring-inner-width: 3px;
+  --focus-ring-outer-width: 2px;
+
+  --layer-base: 0;     --layer-raised: 1;   --layer-sticky: 2;
+  --layer-dropdown: 3; --layer-popover: 4;  --layer-backdrop: 5;
+  --layer-modal: 6;    --layer-toast: 7;    --layer-tooltip: 8;
+
+  /* ===== Layout =============================================== */
+  --layout-breakpoint-mobile-max: 959px;
+  --layout-breakpoint-tablet-min: 960px;
+  --layout-breakpoint-tablet-max: 1279px;
+  --layout-breakpoint-desktop-min: 1280px;
+  --layout-sidebar-width: 250px;
+  --layout-sidebar-padding: 12px;
+  --layout-shell-gap-min: 40px;
+  --layout-content-max-width: 1110px;
+  --layout-top-nav-height: 80px;
+  --layout-mobile-gutter: 16px;
+  --layout-grid-columns-desktop: 12;
+  --layout-grid-columns-tablet: 6;
+  --layout-grid-columns-mobile: 4;
+  --layout-grid-gutter: 16px;
+  --layout-rhythm-section: 32px;
+  --layout-rhythm-summary: 20px;
+  --layout-rhythm-card: 16px;
+
+  /* ===== Iconography ========================================== */
+  --icon-size-12: 12px; --icon-size-16: 16px; --icon-size-24: 24px; --icon-size-32: 32px;
+  --icon-stroke-width: 1.5px;
+  --symbol-size-12: 12px; --symbol-size-16: 16px; --symbol-size-20: 20px;
+  --symbol-size-24: 24px; --symbol-size-32: 32px;
+  --symbol-stroke-12: 1px; --symbol-stroke-16: 1.2px; --symbol-stroke-20: 1.4px;
+  --symbol-stroke-24: 1.5px; --symbol-stroke-32: 2px;
+
+  --opacity-25: 0.25; --opacity-50: 0.5; --opacity-75: 0.75;
+
+  --motion-duration-75: 75ms;   --motion-duration-150: 150ms;
+  --motion-duration-250: 250ms; --motion-duration-400: 400ms;
+  --motion-duration-600: 600ms;
+  --motion-ease-in:     cubic-bezier(0.32, 0, 0.67, 0);
+  --motion-ease-out:    cubic-bezier(0.33, 1, 0.68, 1);
+  --motion-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* ===== TIER 3 (theme-independent) — Status & Control =======
+     These are defined on :root because they reference the raw
+     --color-* tokens that get re-mapped per theme below. */
+
+  /* --color-status-* — full feedback family across 6 tones
+     (neutral, brand, danger, success, warning, accent)
+     Each tone gets a quintet: surface / surface-hover / text / text-hover /
+     fill / fill-hover / fill-text. */
+  --color-status-neutral-surface:        var(--color-neutral-3);
+  --color-status-neutral-surface-hover:  var(--color-neutral-4);
+  --color-status-neutral-text:           var(--color-neutral-7);
+  --color-status-neutral-text-hover:     var(--color-neutral-8);
+  --color-status-neutral-fill:           var(--color-neutral-8);
+  --color-status-neutral-fill-hover:     var(--color-neutral-7);
+  --color-status-neutral-fill-text:      var(--color-neutral-1);
+
+  --color-status-brand-surface:          var(--color-brand-2);
+  --color-status-brand-surface-hover:    var(--color-brand-3);
+  --color-status-brand-text:             var(--color-brand-7);
+  --color-status-brand-text-hover:       var(--color-brand-8);
+  --color-status-brand-fill:             var(--color-brand-5);
+  --color-status-brand-fill-hover:       var(--color-brand-4);
+  --color-status-brand-fill-text:        var(--color-neutral-8);
+
+  --color-status-danger-surface:         var(--color-red-2);
+  --color-status-danger-surface-hover:   var(--color-red-3);
+  --color-status-danger-text:            var(--color-red-5);
+  --color-status-danger-text-hover:      var(--color-red-6);
+  --color-status-danger-fill:            var(--color-red-5);
+  --color-status-danger-fill-hover:      var(--color-red-4);
+  --color-status-danger-fill-text:       var(--color-neutral-8);
+
+  --color-status-success-surface:        var(--color-green-2);
+  --color-status-success-surface-hover:  var(--color-green-3);
+  --color-status-success-text:           var(--color-green-5);
+  --color-status-success-text-hover:     var(--color-green-6);
+  --color-status-success-fill:           var(--color-green-5);
+  --color-status-success-fill-hover:     var(--color-green-4);
+  --color-status-success-fill-text:      var(--color-neutral-8);
+
+  --color-status-warning-surface:        var(--color-orange-2);
+  --color-status-warning-surface-hover:  var(--color-orange-3);
+  --color-status-warning-text:           var(--color-orange-5);
+  --color-status-warning-text-hover:     var(--color-orange-6);
+  --color-status-warning-fill:           var(--color-orange-5);
+  --color-status-warning-fill-hover:     var(--color-orange-4);
+  --color-status-warning-fill-text:      var(--color-neutral-8);
+
+  --color-status-accent:                 var(--color-lime-5);
+  --color-status-accent-surface:         var(--color-lime-2);
+  --color-status-accent-surface-hover:   var(--color-lime-3);
+  --color-status-accent-text:            var(--color-lime-5);
+  --color-status-accent-text-hover:      var(--color-lime-6);
+  --color-status-accent-fill:            var(--color-lime-5);
+  --color-status-accent-fill-hover:      var(--color-lime-4);
+  --color-status-accent-fill-text:       var(--color-neutral-1);
+
+  /* --color-control-* — form controls (input, checkbox, radio,
+     toggle, slider…). Field is the typing surface; box is
+     containerized selection; border-focus is the brand-purple ring. */
+  --color-control-field-surface:           var(--color-neutral-1);
+  --color-control-field-surface-disabled:  var(--color-neutral-1);
+  --color-control-field-surface-skeleton:  var(--color-neutral-3);
+  --color-control-box-surface:             var(--color-neutral-3);
+  --color-control-box-surface-hover:       var(--color-neutral-4);
+  --color-control-box-surface-disabled:    var(--color-neutral-3);
+  --color-control-box-selected:            var(--color-brand-5);
+  --color-control-box-selected-hover:      var(--color-brand-4);
+  --color-control-box-selected-danger:     var(--color-red-5);
+  --color-control-box-selected-danger-hover: var(--color-red-4);
+  --color-control-border:                  var(--color-neutral-4);
+  --color-control-border-subtle:           var(--color-neutral-8);
+  --color-control-border-hover:            var(--color-brand-6);
+  --color-control-border-focus:            var(--color-brand-5);
+  --color-control-border-danger:           var(--color-red-5);
+  --color-control-value:                   var(--color-neutral-8);
+  --color-control-label:                   var(--color-neutral-6);
+  --color-control-placeholder:             var(--color-neutral-6);
+  --color-control-disabled:                var(--color-neutral-6);
+  --color-control-disabled-strong:         var(--color-neutral-5);
+  --color-control-caret:                   var(--color-brand-5);
+  --color-control-success:                 var(--color-green-5);
+}
+
+/* ===== TIER 2 + TIER 3 (per-theme) ======================================
+   --color-* tokens are theme aliases of the raw palette.
+   --color-bg-* / surface / text / icon / border / action / status
+   are SEMANTIC tokens — reach for these in product code first.
+   ======================================================================== */
+
+:root, :root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-neutral-1: var(--dark-color-neutral-1);
+  --color-neutral-2: var(--dark-color-neutral-2);
+  --color-neutral-3: var(--dark-color-neutral-3);
+  --color-neutral-4: var(--dark-color-neutral-4);
+  --color-neutral-5: var(--dark-color-neutral-5);
+  --color-neutral-6: var(--dark-color-neutral-6);
+  --color-neutral-7: var(--dark-color-neutral-7);
+  --color-neutral-8: var(--dark-color-neutral-8);
+  --color-brand-1: var(--dark-color-brand-1); --color-brand-2: var(--dark-color-brand-2);
+  --color-brand-3: var(--dark-color-brand-3); --color-brand-4: var(--dark-color-brand-4);
+  --color-brand-5: var(--dark-color-brand-5); --color-brand-6: var(--dark-color-brand-6);
+  --color-brand-7: var(--dark-color-brand-7); --color-brand-8: var(--dark-color-brand-8);
+  --color-red-1: var(--dark-color-red-1); --color-red-2: var(--dark-color-red-2);
+  --color-red-3: var(--dark-color-red-3); --color-red-4: var(--dark-color-red-4);
+  --color-red-5: var(--dark-color-red-5); --color-red-6: var(--dark-color-red-6);
+  --color-red-7: var(--dark-color-red-7); --color-red-8: var(--dark-color-red-8);
+  --color-green-1: var(--dark-color-green-1); --color-green-2: var(--dark-color-green-2);
+  --color-green-3: var(--dark-color-green-3); --color-green-4: var(--dark-color-green-4);
+  --color-green-5: var(--dark-color-green-5); --color-green-6: var(--dark-color-green-6);
+  --color-green-7: var(--dark-color-green-7); --color-green-8: var(--dark-color-green-8);
+  --color-orange-1: var(--dark-color-orange-1); --color-orange-2: var(--dark-color-orange-2);
+  --color-orange-3: var(--dark-color-orange-3); --color-orange-4: var(--dark-color-orange-4);
+  --color-orange-5: var(--dark-color-orange-5); --color-orange-6: var(--dark-color-orange-6);
+  --color-orange-7: var(--dark-color-orange-7); --color-orange-8: var(--dark-color-orange-8);
+  --color-lime-1: var(--dark-color-lime-1); --color-lime-2: var(--dark-color-lime-2);
+  --color-lime-3: var(--dark-color-lime-3); --color-lime-4: var(--dark-color-lime-4);
+  --color-lime-5: var(--dark-color-lime-5); --color-lime-6: var(--dark-color-lime-6);
+  --color-lime-7: var(--dark-color-lime-7); --color-lime-8: var(--dark-color-lime-8);
+
+  /* ---- Backgrounds ---- */
+  --color-bg-base:        var(--color-neutral-1);  /* app canvas */
+  --color-bg-subtle:      var(--color-neutral-2);  /* slight tint inside canvas */
+  --color-bg-inverse:     var(--color-neutral-8);  /* dark-on-light strips */
+
+  /* ---- Surfaces (stacked cards / sheets) ---- */
+  --color-surface-default:  var(--color-neutral-2);
+  --color-surface-raised:   var(--color-neutral-3);
+  --color-surface-hover:    var(--color-neutral-3);
+  --color-surface-active:   var(--color-neutral-4);
+  --color-surface-selected: var(--color-neutral-4);
+  --color-surface-disabled: var(--color-neutral-3);
+  --color-surface-inverse:  var(--color-neutral-8);
+
+  /* ---- Text ---- */
+  --color-text-primary:      var(--color-neutral-8);
+  --color-text-secondary:    var(--color-neutral-7);
+  --color-text-tertiary:     var(--color-neutral-6);
+  --color-text-muted:        var(--color-neutral-5);
+  --color-text-disabled:     var(--color-neutral-4);
+  --color-text-inverse:      var(--color-neutral-1);
+  --color-text-accent:       var(--color-brand-5);
+  --color-text-accent-hover: var(--color-brand-4);
+  --color-text-danger:       var(--color-red-5);
+  --color-text-success:      var(--color-green-5);
+  --color-text-warning:      var(--color-orange-5);
+
+  /* ---- Icons ---- */
+  --color-icon-primary:   var(--color-neutral-8);
+  --color-icon-secondary: var(--color-neutral-6);
+  --color-icon-muted:     var(--color-neutral-5);
+  --color-icon-disabled:  var(--color-neutral-4);
+  --color-icon-accent:    var(--color-brand-5);
+  --color-icon-danger:    var(--color-red-5);
+  --color-icon-success:   var(--color-green-5);
+  --color-icon-warning:   var(--color-orange-5);
+
+  /* ---- Borders ---- */
+  --color-border-subtle:        var(--color-neutral-3);
+  --color-border-default:       var(--color-neutral-4);
+  --color-border-strong:        var(--color-neutral-5);
+  --color-border-inverse:       var(--color-neutral-8);
+  --color-border-accent:        var(--color-brand-5);
+  --color-border-accent-hover:  var(--color-brand-4);
+  --color-border-danger:        var(--color-red-5);
+  --color-border-success:       var(--color-green-5);
+  --color-border-warning:       var(--color-orange-5);
+
+  /* ---- Action (button) tone families ---- */
+  --color-action-primary:        var(--color-brand-5);
+  --color-action-primary-hover:  var(--color-brand-4);
+  --color-action-primary-text:   var(--color-neutral-8);
+  --color-action-secondary:        var(--color-neutral-3);
+  --color-action-secondary-hover:  var(--color-neutral-4);
+  --color-action-secondary-text:   var(--color-neutral-8);
+  --color-action-inverse:        var(--color-neutral-8);
+  --color-action-inverse-hover:  var(--color-neutral-7);
+  --color-action-inverse-text:   var(--color-neutral-1);
+  --color-action-danger:         var(--color-red-5);
+  --color-action-danger-hover:   var(--color-red-4);
+  --color-action-danger-text:    var(--color-neutral-8);
+  --color-action-success:        var(--color-green-5);
+  --color-action-success-hover:  var(--color-green-4);
+  --color-action-success-text:   var(--color-neutral-8);
+
+  /* ---- Compact status (single-color summaries: dots, deltas) ---- */
+  --color-status-neutral:        var(--color-neutral-8);
+  --color-status-neutral-muted:  var(--color-neutral-5);
+  --color-status-brand:          var(--color-brand-5);
+  --color-status-brand-muted:    var(--color-brand-7);
+  --color-status-danger:         var(--color-red-5);
+  --color-status-danger-muted:   var(--color-red-7);
+  --color-status-success:        var(--color-green-5);
+  --color-status-success-muted:  var(--color-green-7);
+  --color-status-warning:        var(--color-orange-5);
+  --color-status-warning-muted:  var(--color-orange-7);
+
+  --color-focus-inner: var(--color-neutral-1);
+  --color-focus-outer: var(--color-lime-5);
+
+  --color-overlay-backdrop: var(--color-neutral-1);
+  --color-overlay-scrim:    var(--color-neutral-1);
+
+  --focus-ring-inner-color: var(--color-focus-inner);
+  --focus-ring-outer-color: var(--color-focus-outer);
+
+  --shadow-1:
+    0 2px 4px  color-mix(in srgb, var(--color-neutral-1) 11%, transparent),
+    0 8px 16px color-mix(in srgb, var(--color-neutral-1) 5%,  transparent);
+  --shadow-2:
+    0 6px 12px  color-mix(in srgb, var(--color-neutral-1) 13%, transparent),
+    0 16px 30px color-mix(in srgb, var(--color-neutral-1) 6%,  transparent);
+  --shadow-3:
+    0 10px 20px color-mix(in srgb, var(--color-neutral-1) 15%, transparent),
+    0 24px 44px color-mix(in srgb, var(--color-neutral-1) 7%,  transparent);
+  --shadow-4:
+    0 16px 32px color-mix(in srgb, var(--color-neutral-1) 17%, transparent),
+    0 34px 64px color-mix(in srgb, var(--color-neutral-1) 8%,  transparent);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --color-neutral-1: var(--light-color-neutral-8);
+  --color-neutral-2: var(--light-color-neutral-7);
+  --color-neutral-3: var(--light-color-neutral-6);
+  --color-neutral-4: var(--light-color-neutral-5);
+  --color-neutral-5: var(--light-color-neutral-4);
+  --color-neutral-6: var(--light-color-neutral-3);
+  --color-neutral-7: var(--light-color-neutral-2);
+  --color-neutral-8: var(--light-color-neutral-1);
+  --color-brand-1: var(--light-color-brand-8); --color-brand-2: var(--light-color-brand-7);
+  --color-brand-3: var(--light-color-brand-6); --color-brand-4: var(--light-color-brand-5);
+  --color-brand-5: var(--light-color-brand-4); --color-brand-6: var(--light-color-brand-3);
+  --color-brand-7: var(--light-color-brand-2); --color-brand-8: var(--light-color-brand-1);
+  --color-red-1: var(--light-color-red-8); --color-red-2: var(--light-color-red-7);
+  --color-red-3: var(--light-color-red-6); --color-red-4: var(--light-color-red-5);
+  --color-red-5: var(--light-color-red-4); --color-red-6: var(--light-color-red-3);
+  --color-red-7: var(--light-color-red-2); --color-red-8: var(--light-color-red-1);
+  --color-green-1: var(--light-color-green-8); --color-green-2: var(--light-color-green-7);
+  --color-green-3: var(--light-color-green-6); --color-green-4: var(--light-color-green-5);
+  --color-green-5: var(--light-color-green-4); --color-green-6: var(--light-color-green-3);
+  --color-green-7: var(--light-color-green-2); --color-green-8: var(--light-color-green-1);
+  --color-orange-1: var(--light-color-orange-8); --color-orange-2: var(--light-color-orange-7);
+  --color-orange-3: var(--light-color-orange-6); --color-orange-4: var(--light-color-orange-5);
+  --color-orange-5: var(--light-color-orange-4); --color-orange-6: var(--light-color-orange-3);
+  --color-orange-7: var(--light-color-orange-2); --color-orange-8: var(--light-color-orange-1);
+  --color-lime-1: var(--light-color-lime-8); --color-lime-2: var(--light-color-lime-7);
+  --color-lime-3: var(--light-color-lime-6); --color-lime-4: var(--light-color-lime-5);
+  --color-lime-5: var(--light-color-lime-4); --color-lime-6: var(--light-color-lime-3);
+  --color-lime-7: var(--light-color-lime-2); --color-lime-8: var(--light-color-lime-1);
+
+  --color-bg-base:    var(--color-neutral-1);
+  --color-bg-subtle:  var(--color-neutral-2);
+  --color-bg-inverse: var(--color-neutral-8);
+
+  --color-surface-default:  var(--color-neutral-2);
+  --color-surface-raised:   var(--color-neutral-3);
+  --color-surface-hover:    var(--color-neutral-3);
+  --color-surface-active:   var(--color-neutral-4);
+  --color-surface-selected: var(--color-neutral-4);
+  --color-surface-disabled: var(--color-neutral-3);
+  --color-surface-inverse:  var(--color-neutral-8);
+
+  --color-text-primary:      var(--color-neutral-8);
+  --color-text-secondary:    var(--color-neutral-7);
+  --color-text-tertiary:     var(--color-neutral-6);
+  --color-text-muted:        var(--color-neutral-5);
+  --color-text-disabled:     var(--color-neutral-4);
+  --color-text-inverse:      var(--color-neutral-1);
+  --color-text-accent:       var(--color-brand-5);
+  --color-text-accent-hover: var(--color-brand-4);
+  --color-text-danger:       var(--color-red-5);
+  --color-text-success:      var(--color-green-5);
+  --color-text-warning:      var(--color-orange-5);
+
+  --color-icon-primary:   var(--color-neutral-8);
+  --color-icon-secondary: var(--color-neutral-6);
+  --color-icon-muted:     var(--color-neutral-5);
+  --color-icon-disabled:  var(--color-neutral-4);
+  --color-icon-accent:    var(--color-brand-5);
+  --color-icon-danger:    var(--color-red-5);
+  --color-icon-success:   var(--color-green-5);
+  --color-icon-warning:   var(--color-orange-5);
+
+  --color-border-subtle:        var(--color-neutral-3);
+  --color-border-default:       var(--color-neutral-4);
+  --color-border-strong:        var(--color-neutral-5);
+  --color-border-inverse:       var(--color-neutral-8);
+  --color-border-accent:        var(--color-brand-5);
+  --color-border-accent-hover:  var(--color-brand-4);
+  --color-border-danger:        var(--color-red-5);
+  --color-border-success:       var(--color-green-5);
+  --color-border-warning:       var(--color-orange-5);
+
+  --color-action-primary:        var(--color-brand-5);
+  --color-action-primary-hover:  var(--color-brand-4);
+  --color-action-primary-text:   var(--color-neutral-8);
+  --color-action-secondary:        var(--color-neutral-3);
+  --color-action-secondary-hover:  var(--color-neutral-4);
+  --color-action-secondary-text:   var(--color-neutral-8);
+  --color-action-inverse:        var(--color-neutral-8);
+  --color-action-inverse-hover:  var(--color-neutral-7);
+  --color-action-inverse-text:   var(--color-neutral-1);
+  --color-action-danger:         var(--color-red-5);
+  --color-action-danger-hover:   var(--color-red-4);
+  --color-action-danger-text:    var(--color-neutral-8);
+  --color-action-success:        var(--color-green-5);
+  --color-action-success-hover:  var(--color-green-4);
+  --color-action-success-text:   var(--color-neutral-8);
+
+  --color-status-neutral:        var(--color-neutral-8);
+  --color-status-neutral-muted:  var(--color-neutral-5);
+  --color-status-brand:          var(--color-brand-5);
+  --color-status-brand-muted:    var(--color-brand-7);
+  --color-status-danger:         var(--color-red-5);
+  --color-status-danger-muted:   var(--color-red-7);
+  --color-status-success:        var(--color-green-5);
+  --color-status-success-muted:  var(--color-green-7);
+  --color-status-warning:        var(--color-orange-5);
+  --color-status-warning-muted:  var(--color-orange-7);
+
+  --color-focus-inner: var(--color-neutral-8);
+  --color-focus-outer: var(--color-lime-5);
+
+  --color-overlay-backdrop: var(--color-neutral-8);
+  --color-overlay-scrim:    var(--color-neutral-8);
+
+  --focus-ring-inner-color: var(--color-focus-inner);
+  --focus-ring-outer-color: var(--color-focus-outer);
+
+  --shadow-1:
+    0 1px 2px color-mix(in srgb, color-mix(in srgb, var(--color-neutral-7) 72%, var(--color-brand-7) 28%) 8%, transparent),
+    0 4px 8px color-mix(in srgb, color-mix(in srgb, var(--color-neutral-7) 72%, var(--color-brand-7) 28%) 4%, transparent);
+  --shadow-2:
+    0 2px 4px  color-mix(in srgb, color-mix(in srgb, var(--color-neutral-7) 72%, var(--color-brand-7) 28%) 8%, transparent),
+    0 10px 18px color-mix(in srgb, color-mix(in srgb, var(--color-neutral-7) 72%, var(--color-brand-7) 28%) 6%, transparent);
+  --shadow-3:
+    0 4px 8px  color-mix(in srgb, color-mix(in srgb, var(--color-neutral-7) 72%, var(--color-brand-7) 28%) 9%, transparent),
+    0 16px 28px color-mix(in srgb, color-mix(in srgb, var(--color-neutral-7) 72%, var(--color-brand-7) 28%) 7%, transparent);
+  --shadow-4:
+    0 6px 12px color-mix(in srgb, color-mix(in srgb, var(--color-neutral-7) 72%, var(--color-brand-7) 28%) 10%, transparent),
+    0 24px 44px color-mix(in srgb, color-mix(in srgb, var(--color-neutral-7) 72%, var(--color-brand-7) 28%) 8%, transparent);
+}
+</style>
+<script src="assets/doc-page-element.js"></script>
+<style>
+  doc-page:not(:defined) { visibility: hidden; }
+  body { margin: 0; font-family: 'Roobert PRO', system-ui, sans-serif; }
+  a { color: #6d28d9; text-decoration: none; }
+  a:hover { color: #4c1d95; }
+</style>
+</helmet>
+
+<doc-page margin="0.85in">
+  <div slot="header" style="display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px solid #d4d4d4; font-size: 9pt; color: #6b6b6b; letter-spacing: 0.06em; text-transform: uppercase;">
+    <span>EMCD Coinhold Wallet — Festival Season</span>
+    <span>Version 1.2 · Effective August 31, 2026</span>
+  </div>
+  <div slot="footer" style="padding-top: 8px; border-top: 1px solid #d4d4d4; font-size: 8.5pt; color: #8a8a8a;">EMCD FINTECH CORP · https://emcd.io</div>
+
+  <h1 style="margin: 0 0 6pt; font-size: 26pt; line-height: 1.15; font-weight: 700; letter-spacing: -0.02em; color: #141414;">Terms and Conditions of the “Festival Season” Marketing Campaign</h1>
+  <p style="margin: 0 0 26pt; font-size: 10.5pt; color: #6b6b6b;">Version 1.2 &nbsp;·&nbsp; Effective Date: August 31, 2026</p>
+
+  <h2 style="margin: 22pt 0 8pt; font-size: 14pt; font-weight: 700; color: #141414;">1. Organizer</h2>
+  <p style="margin: 0 0 10pt; font-size: 11pt; line-height: 1.55; color: #232323;">The Organizer of this Campaign is EMCD FINTECH CORP, a company incorporated under the laws of Panama (hereinafter referred to as the “Organizer”), operating the EMCD platform at <a href="https://emcd.io">https://emcd.io</a></p>
+
+  <h2 style="margin: 22pt 0 8pt; font-size: 14pt; font-weight: 700; color: #141414;">2. Campaign Name and Duration</h2>
+  <p style="margin: 0 0 10pt; font-size: 11pt; line-height: 1.55; color: #232323;">Campaign name: “Festival Season”<br>Duration: From August 31, 2026 to September 07, 2026, inclusive (UTC+3).</p>
+
+  <h2 style="margin: 22pt 0 8pt; font-size: 14pt; font-weight: 700; color: #141414;">3. Territory</h2>
+  <p style="margin: 0 0 10pt; font-size: 11pt; line-height: 1.55; color: #232323;">The Campaign is valid in all countries except jurisdictions where the use or promotion of cryptocurrency is restricted or prohibited by law or subject to sanctions under international or national regulations.</p>
+
+  <h2 style="margin: 22pt 0 8pt; font-size: 14pt; font-weight: 700; color: #141414;">4. Definitions</h2>
+  <p style="margin: 0 0 8pt; font-size: 11pt; line-height: 1.55; color: #232323;">“Participant” means an individual who satisfies the eligibility criteria in Section 5 and completes the participation requirements in Section 6.</p>
+  <p style="margin: 0 0 8pt; font-size: 11pt; line-height: 1.55; color: #232323;">“Winner” means a Participant selected in the Prize Draw in accordance with Section 7.</p>
+  <p style="margin: 0 0 8pt; font-size: 11pt; line-height: 1.55; color: #232323;">“Partner” means one individual nominated by a confirmed Winner in accordance with Section 8, who joins the EMCD Coinhold Wallet platform through the Winner’s official Campaign link and satisfies the Partner Conditions set out in Section 8.</p>
+  <p style="margin: 0 0 10pt; font-size: 11pt; line-height: 1.55; color: #232323;">“Pair” means a Winner together with that Winner’s confirmed Partner.</p>
+
+  <h2 style="margin: 22pt 0 8pt; font-size: 14pt; font-weight: 700; color: #141414;">5. Eligibility</h2>
+  <p style="margin: 0 0 8pt; font-size: 11pt; line-height: 1.55; color: #232323;">Participation is open to individuals who:</p>
+  <ul style="margin: 0 0 10pt; padding-left: 18pt; font-size: 11pt; line-height: 1.55; color: #232323;">
+    <li style="margin-bottom: 4pt;">are at least 18 years old (or have reached the legal age in their country);</li>
+    <li style="margin-bottom: 4pt;">have a verified EMCD account;</li>
+    <li style="margin-bottom: 4pt;">reside in a territory where participation is permitted under Section 3;</li>
+    <li style="margin-bottom: 4pt;">have never previously opened a Grow position before the Campaign Period;</li>
+    <li style="margin-bottom: 4pt;">use an official Campaign communication, link, or flow where required for attribution; and</li>
+    <li style="margin-bottom: 4pt;">fulfill all participation conditions set out in Section 6.</li>
+  </ul>
+  <p style="margin: 0 0 8pt; font-size: 11pt; line-height: 1.55; color: #232323;">Employees of EMCD Group Companies and their immediate family members are not eligible to participate in the Campaign Prize Draw, and may not be nominated as a Partner.</p>
+  <p style="margin: 0 0 10pt; font-size: 11pt; line-height: 1.55; color: #232323;">The Organizer reserves the right to disqualify any Participant, Winner or Partner suspected of violating these Terms, providing false information, using multiple accounts, manipulating Campaign attribution, or engaging in fraudulent behavior.</p>
+
+  <h2 style="margin: 22pt 0 8pt; font-size: 14pt; font-weight: 700; color: #141414;">6. Participation Requirements</h2>
+  <p style="margin: 0 0 8pt; font-size: 11pt; line-height: 1.55; color: #232323;">To receive an entry into the Prize Draw, a Participant must:</p>
+  <ul style="margin: 0 0 10pt; padding-left: 18pt; font-size: 11pt; line-height: 1.55; color: #232323;">
+    <li style="margin-bottom: 4pt;">open at least one new Fixed Grow position during the Campaign Period;</li>
+    <li style="margin-bottom: 4pt;">use BTC or USDT as the qualifying asset;</li>
+    <li style="margin-bottom: 4pt;">select one of the following Fixed Grow terms: 30 days; 90 days; 180 days; or 360 days;</li>
+    <li style="margin-bottom: 4pt;">deposit at least USD 500 into the qualifying Grow position, calculated at the time the position is opened;</li>
+    <li style="margin-bottom: 4pt;">keep the qualifying Grow position active until the Organizer completes eligibility verification;</li>
+    <li style="margin-bottom: 4pt;">satisfy all applicable account, KYC, compliance and geographic eligibility requirements.</li>
+  </ul>
+  <p style="margin: 0 0 8pt; font-size: 11pt; line-height: 1.55; color: #232323;">Each eligible Participant receives one entry into the Prize Draw, regardless of: the number of qualifying Grow positions opened; the amount deposited above the minimum qualifying amount; or the selected qualifying Fixed Grow term.</p>
+  <p style="margin: 0 0 8pt; font-size: 11pt; line-height: 1.55; color: #232323;">Opening multiple qualifying Grow positions does not provide additional entries or increase the Participant’s chances of winning.</p>
+  <p style="margin: 0 0 10pt; font-size: 11pt; line-height: 1.55; color: #232323;">Each Participant may receive no more than one Campaign prize, whether as a Winner or as a Partner.</p>
+
+  <h2 style="margin: 22pt 0 8pt; font-size: 14pt; font-weight: 700; color: #141414;">7. Prizes and Winner Selection</h2>
+  <p style="margin: 0 0 8pt; font-size: 11pt; line-height: 1.55; color: #232323;">The total value of prizes available under the Campaign is USD 4,000.</p>
+  <p style="margin: 0 0 10pt; font-size: 11pt; line-height: 1.55; color: #232323;">Prizes are awarded in Pairs. A total of three (3) Winners will be selected, and each Winner nominates one (1) Partner. Each Winner and their confirmed Partner receive a digital gift certificate of the same value:</p>
+  <sc-raw-table style="width: 100%; border-collapse: collapse; margin: 0 0 12pt; font-size: 10.5pt; color: #232323; break-inside: avoid;">
+    <sc-raw-thead>
+      <sc-raw-tr>
+        <sc-raw-th style="text-align: left; padding: 7pt 8pt; border-bottom: 1px solid #141414; font-weight: 700;">Pair</sc-raw-th>
+        <sc-raw-th style="text-align: left; padding: 7pt 8pt; border-bottom: 1px solid #141414; font-weight: 700;">Winner receives</sc-raw-th>
+        <sc-raw-th style="text-align: left; padding: 7pt 8pt; border-bottom: 1px solid #141414; font-weight: 700;">Partner receives</sc-raw-th>
+        <sc-raw-th style="text-align: left; padding: 7pt 8pt; border-bottom: 1px solid #141414; font-weight: 700;">Pair total</sc-raw-th>
+      </sc-raw-tr>
+    </sc-raw-thead>
+    <sc-raw-tbody>
+      <sc-raw-tr><sc-raw-td style="padding: 7pt 8pt; border-bottom: 1px solid #e0e0e0;">1</sc-raw-td><sc-raw-td style="padding: 7pt 8pt; border-bottom: 1px solid #e0e0e0;">USD 1,000</sc-raw-td><sc-raw-td style="padding: 7pt 8pt; border-bottom: 1px solid #e0e0e0;">USD 1,000</sc-raw-td><sc-raw-td style="padding: 7pt 8pt; border-bottom: 1px solid #e0e0e0;">USD 2,000</sc-raw-td></sc-raw-tr>
+      <sc-raw-tr><sc-raw-td style="padding: 7pt 8pt; border-bottom: 1px solid #e0e0e0;">2</sc-raw-td><sc-raw-td style="padding: 7pt 8pt; border-bottom: 1px solid #e0e0e0;">USD 500</sc-raw-td><sc-raw-td style="padding: 7pt 8pt; border-bottom: 1px solid #e0e0e0;">USD 500</sc-raw-td><sc-raw-td style="padding: 7pt 8pt; border-bottom: 1px solid #e0e0e0;">USD 1,000</sc-raw-td></sc-raw-tr>
+      <sc-raw-tr><sc-raw-td style="padding: 7pt 8pt; border-bottom: 1px solid #e0e0e0;">3</sc-raw-td><sc-raw-td style="padding: 7pt 8pt; border-bottom: 1px solid #e0e0e0;">USD 500</sc-raw-td><sc-raw-td style="padding: 7pt 8pt; border-bottom: 1px solid #e0e0e0;">USD 500</sc-raw-td><sc-raw-td style="padding: 7pt 8pt; border-bottom: 1px solid #e0e0e0;">USD 1,000</sc-raw-td></sc-raw-tr>
+    </sc-raw-tbody>
+  </sc-raw-table>
+  <p style="margin: 0 0 8pt; font-size: 11pt; line-height: 1.55; color: #232323;">A maximum of six (6) digital gift certificates will be issued under the Campaign, with a maximum total value of USD 4,000.</p>
+  <p style="margin: 0 0 8pt; font-size: 11pt; line-height: 1.55; color: #232323;">Winners will be selected randomly from all eligible Participants after the Campaign has ended and eligibility has been verified. Each eligible Participant will have one entry in the Prize Draw. The winner selection process will be conducted in a manner that allows the Organizer to verify and audit the result. Final eligibility will be checked before a Winner is confirmed.</p>
+  <p style="margin: 0 0 8pt; font-size: 11pt; line-height: 1.55; color: #232323;">The Organizer currently intends to conduct the Prize Draw on or around September 9, 2026, subject to final operational confirmation. The Organizer may postpone the winner selection where additional time is reasonably required to complete eligibility, compliance, fraud or analytics verification.</p>
+  <p style="margin: 0 0 8pt; font-size: 11pt; line-height: 1.55; color: #232323;">Winners will be contacted using the email address associated with their EMCD Coinhold Wallet account or through another official EMCD Coinhold Wallet communication channel.</p>
+  <p style="margin: 0 0 6pt; font-size: 11pt; line-height: 1.55; color: #232323;">A Winner may be required to:</p>
+  <ul style="margin: 0 0 10pt; padding-left: 18pt; font-size: 11pt; line-height: 1.55; color: #232323;">
+    <li style="margin-bottom: 4pt;">confirm their identity;</li>
+    <li style="margin-bottom: 4pt;">confirm their country or region of residence;</li>
+    <li style="margin-bottom: 4pt;">complete additional eligibility or compliance verification where required;</li>
+    <li style="margin-bottom: 4pt;">nominate a Partner in accordance with Section 8; and</li>
+    <li style="margin-bottom: 4pt;">select a gift certificate from the options available for their country or region.</li>
+  </ul>
+
+  <h2 style="margin: 22pt 0 8pt; font-size: 14pt; font-weight: 700; color: #141414;">8. Partner Nomination</h2>
+  <p style="margin: 0 0 8pt; font-size: 11pt; line-height: 1.55; color: #232323;">The second gift certificate in each Pair is not issued to the Winner. It is issued to one individual nominated by the Winner, on the following conditions (the “Partner Conditions”):</p>
+  <ol style="margin: 0 0 10pt; padding-left: 18pt; font-size: 11pt; line-height: 1.55; color: #232323;">
+    <li style="margin-bottom: 5pt;">Within ten (10) calendar days of being notified that they have been confirmed as a Winner, the Winner nominates one individual by submitting that individual’s name and email address through the official Campaign form or communication channel.</li>
+    <li style="margin-bottom: 5pt;">The Winner confirms that the nominated individual has agreed to be nominated and to receive Campaign communications at the email address provided.</li>
+    <li style="margin-bottom: 5pt;">The nominated individual did not hold an EMCD or EMCD Coinhold Wallet account prior to the date of nomination.</li>
+    <li style="margin-bottom: 5pt;">The nominated individual registers an EMCD Coinhold Wallet account through the Winner’s official Campaign link, completes account verification (KYC), and satisfies the age and territory requirements set out in Sections 3 and 5, in each case within ten (10) calendar days of the nomination.</li>
+    <li style="margin-bottom: 5pt;">The nominated individual is not an employee of an EMCD Group Company or an immediate family member of such an employee.</li>
+  </ol>
+  <p style="margin: 0 0 8pt; font-size: 11pt; line-height: 1.55; color: #232323;">A nominated individual who satisfies all Partner Conditions is confirmed as the Winner’s Partner and receives the second gift certificate of that Pair.</p>
+  <p style="margin: 0 0 8pt; font-size: 11pt; line-height: 1.55; color: #232323;">No deposit, Grow position or other financial commitment is required from a Partner in order to receive the gift certificate.</p>
+  <p style="margin: 0 0 8pt; font-size: 11pt; line-height: 1.55; color: #232323;">A Winner may nominate only one individual at a time, and may not nominate an individual who has already been nominated by another Winner. If a nominated individual declines, does not complete the Partner Conditions within the applicable period, or is found ineligible, the Winner may submit one (1) replacement nomination within a further five (5) calendar days.</p>
+  <p style="margin: 0 0 8pt; font-size: 11pt; line-height: 1.55; color: #232323;">If no Partner is confirmed after the periods above have expired, the second gift certificate of that Pair will not be issued to the Winner and may not be exchanged, transferred, added to the Winner’s own prize, or converted into cash or any other benefit. The Organizer may, at its discretion, reassign the unissued certificate to another Pair drawn from the remaining eligible Participants, or withdraw it from the Campaign.</p>
+  <p style="margin: 0 0 10pt; font-size: 11pt; line-height: 1.55; color: #232323;">The Winner’s own gift certificate is not conditional on a Partner being confirmed.</p>
+
+  <h2 style="margin: 22pt 0 8pt; font-size: 14pt; font-weight: 700; color: #141414;">9. Gift Certificates</h2>
+  <p style="margin: 0 0 6pt; font-size: 11pt; line-height: 1.55; color: #232323;">The exact gift certificate provider will be determined based on:</p>
+  <ul style="margin: 0 0 10pt; padding-left: 18pt; font-size: 11pt; line-height: 1.55; color: #232323;">
+    <li style="margin-bottom: 4pt;">the recipient’s country or region of residence;</li>
+    <li style="margin-bottom: 4pt;">local availability;</li>
+    <li style="margin-bottom: 4pt;">operational availability; and</li>
+    <li style="margin-bottom: 4pt;">applicable Finance, Legal and compliance requirements.</li>
+  </ul>
+  <p style="margin: 0 0 8pt; font-size: 11pt; line-height: 1.55; color: #232323;">Possible gift certificate providers may include Apple, Google Play, Amazon, local electronics retailers, local marketplaces or another approved regional digital retailer, where available. The Campaign does not guarantee the availability of any specific gift certificate brand or provider. If the originally intended gift certificate is unavailable in the recipient’s country or region, the Organizer may provide an alternative digital gift certificate of the same stated value that is available in that country or region. A Winner and their Partner may receive certificates from different providers where they reside in different countries or regions.</p>
+  <p style="margin: 0 0 6pt; font-size: 11pt; line-height: 1.55; color: #232323;">Gift certificates:</p>
+  <ul style="margin: 0 0 10pt; padding-left: 18pt; font-size: 11pt; line-height: 1.55; color: #232323;">
+    <li style="margin-bottom: 4pt;">are non-transferable through the Organizer;</li>
+    <li style="margin-bottom: 4pt;">may not be exchanged for cash through the Organizer; and</li>
+    <li style="margin-bottom: 4pt;">remain subject to the applicable terms, restrictions and expiration rules of the relevant third-party issuer or provider.</li>
+  </ul>
+  <p style="margin: 0 0 8pt; font-size: 11pt; line-height: 1.55; color: #232323;">Digital gift certificates will normally be delivered electronically within seven (7) business days after the relevant recipient has successfully completed all required verification and confirmed an available gift certificate option. Certificates within the same Pair may be delivered on different dates.</p>
+  <p style="margin: 0 0 10pt; font-size: 11pt; line-height: 1.55; color: #232323;">If a Winner or a Partner is found to be ineligible or in breach of these Terms, the Organizer reserves the right to withhold, revoke or reassign the applicable prize.</p>
+
+  <h2 style="margin: 22pt 0 8pt; font-size: 14pt; font-weight: 700; color: #141414;">10. Restrictions and Early Termination</h2>
+  <p style="margin: 0 0 6pt; font-size: 11pt; line-height: 1.55; color: #232323;">The Organizer reserves the right to:</p>
+  <ul style="margin: 0 0 10pt; padding-left: 18pt; font-size: 11pt; line-height: 1.55; color: #232323;">
+    <li style="margin-bottom: 4pt;">suspend, amend, or terminate the Campaign at any time without notice;</li>
+    <li style="margin-bottom: 4pt;">adjust Campaign rules, duration, eligibility criteria, prize availability, nomination periods, or selection mechanism where reasonably necessary;</li>
+    <li style="margin-bottom: 4pt;">reject or disqualify entries or nominations that are incomplete, ineligible, duplicated, manipulated, or fraudulent.</li>
+  </ul>
+
+  <h2 style="margin: 22pt 0 8pt; font-size: 14pt; font-weight: 700; color: #141414;">11. Force Majeure</h2>
+  <p style="margin: 0 0 6pt; font-size: 11pt; line-height: 1.55; color: #232323;">The Organizer shall not be liable for any failure to fulfill its obligations under this Campaign where such failure results from causes beyond its reasonable control, including but not limited to:</p>
+  <ul style="margin: 0 0 10pt; padding-left: 18pt; font-size: 11pt; line-height: 1.55; color: #232323;">
+    <li style="margin-bottom: 4pt;">natural disasters, pandemics;</li>
+    <li style="margin-bottom: 4pt;">power outages or internet disruptions;</li>
+    <li style="margin-bottom: 4pt;">wars, civil unrest, or political instability;</li>
+    <li style="margin-bottom: 4pt;">legal or regulatory changes;</li>
+    <li style="margin-bottom: 4pt;">failure, restriction, regional unavailability, or interruption of third-party platforms, gift card issuers, or services.</li>
+  </ul>
+
+  <h2 style="margin: 22pt 0 8pt; font-size: 14pt; font-weight: 700; color: #141414;">12. Use of Personal Data</h2>
+  <p style="margin: 0 0 6pt; font-size: 11pt; line-height: 1.55; color: #232323;">By participating in the Campaign, Participants consent to the Organizer processing their data for:</p>
+  <ul style="margin: 0 0 10pt; padding-left: 18pt; font-size: 11pt; line-height: 1.55; color: #232323;">
+    <li style="margin-bottom: 4pt;">administering the Campaign;</li>
+    <li style="margin-bottom: 4pt;">verifying Campaign eligibility and completion of the qualifying Grow term;</li>
+    <li style="margin-bottom: 4pt;">selecting and notifying Winners;</li>
+    <li style="margin-bottom: 4pt;">administering Partner nominations and verifying Partner Conditions;</li>
+    <li style="margin-bottom: 4pt;">confirming the recipient’s country or region where required to determine available gift card options;</li>
+    <li style="margin-bottom: 4pt;">delivering prizes.</li>
+  </ul>
+  <p style="margin: 0 0 8pt; font-size: 11pt; line-height: 1.55; color: #232323;">A Winner who submits a nomination confirms that they have obtained the nominated individual’s agreement to the submission of that individual’s name and email address to the Organizer for the purposes set out above. The Organizer will contact a nominated individual solely in connection with the Campaign until that individual registers an account and provides their own consents.</p>
+  <p style="margin: 0 0 8pt; font-size: 11pt; line-height: 1.55; color: #232323;">Consent to receive promotional materials, product updates and personalized offers is collected separately and is not a condition of participation. Participants and Partners may opt out of marketing communications at any time via the unsubscribe link in emails.</p>
+  <p style="margin: 0 0 10pt; font-size: 11pt; line-height: 1.55; color: #232323;">Personal data will be processed in accordance with EMCD’s Privacy Policy.</p>
+
+  <h2 style="margin: 22pt 0 8pt; font-size: 14pt; font-weight: 700; color: #141414;">13. Liability</h2>
+  <p style="margin: 0 0 6pt; font-size: 11pt; line-height: 1.55; color: #232323;">Participation is voluntary. The Organizer disclaims all liability for:</p>
+  <ul style="margin: 0 0 10pt; padding-left: 18pt; font-size: 11pt; line-height: 1.55; color: #232323;">
+    <li style="margin-bottom: 4pt;">service disruptions, errors, or data loss;</li>
+    <li style="margin-bottom: 4pt;">inability to contact a Winner or a nominated individual due to incorrect, incomplete or inaccessible contact information;</li>
+    <li style="margin-bottom: 4pt;">the failure of a nominated individual to accept a nomination or to complete the Partner Conditions within the applicable period;</li>
+    <li style="margin-bottom: 4pt;">inability to provide a specific gift card brand because it is unavailable or restricted in the recipient’s country or region;</li>
+    <li style="margin-bottom: 4pt;">restrictions, expiration rules, account requirements, or other conditions imposed by third-party gift card issuers or platforms;</li>
+    <li style="margin-bottom: 4pt;">any taxes, fees, or legal obligations incurred by a Winner or a Partner due to receipt or use of a prize.</li>
+  </ul>
+  <p style="margin: 0 0 10pt; font-size: 11pt; line-height: 1.55; color: #232323;">To the fullest extent permitted by law, the Organizer shall not be liable for any indirect, incidental, or consequential damages related to this Campaign.</p>
+
+  <h2 style="margin: 22pt 0 8pt; font-size: 14pt; font-weight: 700; color: #141414;">14. Other Terms</h2>
+  <ul style="margin: 0 0 10pt; padding-left: 18pt; font-size: 11pt; line-height: 1.55; color: #232323;">
+    <li style="margin-bottom: 4pt;">This Campaign is a promotional event and not a public offering.</li>
+    <li style="margin-bottom: 4pt;">The Organizer is not obliged to enter into any correspondence regarding the outcome of the winner selection.</li>
+    <li style="margin-bottom: 4pt;">The Organizer may publish anonymized Winner and Partner data (e.g. usernames or initials) via official channels.</li>
+    <li style="margin-bottom: 4pt;">References to Apple, Google Play, Amazon or any other third-party brand are solely for the purpose of identifying potential prize options. The Campaign is not sponsored, endorsed, administered by, or associated with those third-party brands unless expressly stated otherwise.</li>
+    <li style="margin-bottom: 4pt;">If any provision of these Terms is found to be unenforceable, the remaining terms shall remain in effect.</li>
+    <li style="margin-bottom: 4pt;">These Terms are governed by the laws of Panama.</li>
+    <li style="margin-bottom: 4pt;">In the event of conflict between translated versions of these Terms, the English version shall prevail.</li>
+  </ul>
+</doc-page>
+
+</x-dc>
+
+
+</body></html>
